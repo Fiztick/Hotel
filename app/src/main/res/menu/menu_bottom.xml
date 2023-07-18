@@ -5,6 +5,10 @@
         android:icon="@drawable/ic_baseline_home_24"
         android:id="@+id/nav_bottom_home" />
     <item
+        android:title="Booking"
+        android:icon="@drawable/ic_baseline_bookmarks_24"
+        android:id="@+id/nav_bottom_booking" />
+    <item
         android:title="Settings"
         android:icon="@drawable/ic_baseline_settings_24"
         android:id="@+id/nav_bottom_setting" />

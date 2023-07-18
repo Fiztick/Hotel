@@ -21,6 +21,7 @@ import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.pnj.hotel.auth.SettingsActivity
+import com.pnj.hotel.booking.BookingActivity
 import com.pnj.hotel.chat.ChatActivity
 import com.pnj.hotel.databinding.ActivityMainBinding
 import com.pnj.hotel.kamar.AddKamarActivity
@@ -83,6 +84,10 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId) {
                 R.id.nav_bottom_home -> {
                     val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.nav_bottom_booking -> {
+                    val intent = Intent(this, BookingActivity::class.java)
                     startActivity(intent)
                 }
                 R.id.nav_bottom_setting -> {
