@@ -106,8 +106,8 @@ class MainActivity : AppCompatActivity() {
     private fun load_data() {
         kamarArrayList.clear()
         db = FirebaseFirestore.getInstance()
-        db.collection("kamar").
-                addSnapshotListener(object : EventListener<QuerySnapshot>{
+        db.collection("kamar")
+            .addSnapshotListener(object : EventListener<QuerySnapshot>{
                     override fun onEvent(
                         value: QuerySnapshot?,
                         error: FirebaseFirestoreException?

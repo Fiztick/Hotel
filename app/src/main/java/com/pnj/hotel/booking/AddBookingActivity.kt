@@ -13,9 +13,6 @@ class AddBookingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddBookingBinding
     private val firestoreDatabase = FirebaseFirestore.getInstance()
 
-    private lateinit var activity: AppCompatActivity
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,8 +24,8 @@ class AddBookingActivity : AppCompatActivity() {
         }
 
         binding.TxtAddNoKamar.setOnClickListener {
-            activity = it.context as AppCompatActivity
-            activity.startActivity(Intent(activity, PilihKamarActivity::class.java))
+            val intent = Intent(this, PilihKamarActivity::class.java)
+            startActivity(intent)
 
             val no_kamar = getNoKamar()
 

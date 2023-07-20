@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Hotel"
         tools:targetApi="31">
         <activity
-            android:name=".PilihKamarTersediaActivity"
+            android:name=".kamar.PilihKamarActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
