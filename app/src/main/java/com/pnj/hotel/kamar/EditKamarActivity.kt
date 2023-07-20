@@ -38,6 +38,7 @@ class EditKamarActivity : AppCompatActivity() {
         binding = ActivityEditKamarBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // set default value dari item yang dipilih
         val (curr_kamar) = setDefaultValue()
         showFoto()
 

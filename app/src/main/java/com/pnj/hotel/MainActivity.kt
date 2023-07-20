@@ -132,7 +132,7 @@ class MainActivity : AppCompatActivity() {
 
         // bikin query firebase
         val query = db.collection("kamar")
-            .orderBy("nama")
+            .orderBy("no_kamar")
             .startAt(keyword)
             .get()
         query.addOnSuccessListener {

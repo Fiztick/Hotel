@@ -12,39 +12,37 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.storage.FirebaseStorage
 import com.pnj.hotel.R
+import com.pnj.hotel.booking.AddBookingActivity
 import java.io.File
 
-class KamarAdapter(private val kamarList: ArrayList<Kamar>) :
-    RecyclerView.Adapter<KamarAdapter.KamarViewHolder>(){
+class PilihKamarAdapter(private val pilihKamarList: ArrayList<Kamar>) :
+    RecyclerView.Adapter<PilihKamarAdapter.PilihKamarViewHolder>(){
 
     private lateinit var activity: AppCompatActivity
 
-    class KamarViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class PilihKamarViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val no_kamar: TextView = itemView.findViewById(R.id.TVLNoKamar)
         val tipe_kamar: TextView = itemView.findViewById(R.id.TVLTipeKamar)
         val ketersediaan: TextView = itemView.findViewById(R.id.TVLKetersediaan)
         val img_kamar: ImageView = itemView.findViewById(R.id.IMLGambarKamar)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KamarViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PilihKamarViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.kamar_list_layout, parent, false)
-        return KamarViewHolder(itemView)
+        return PilihKamarViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: KamarViewHolder, position: Int) {
-        val kamar: Kamar = kamarList[position]
+    override fun onBindViewHolder(holder: PilihKamarViewHolder, position: Int) {
+        val kamar: Kamar = pilihKamarList[position]
         holder.no_kamar.text = kamar.no_kamar
         holder.tipe_kamar.text = kamar.tipe_kamar
-//        holder.ketersediaan.text = kamar.ketersediaan
 
-        // kalo itemnya diklik loncat ke activity edit kamar
+        // item diklik loncat balik ke addbooking activity
         holder.itemView.setOnClickListener {
             activity = it.context as AppCompatActivity
-            activity.startActivity(Intent(activity, EditKamarActivity::class.java).apply {
+            activity.startActivity(Intent(activity, AddBookingActivity::class.java).apply {
                 putExtra("no_kamar", kamar.no_kamar.toString())
-                putExtra("tipe_kamar", kamar.tipe_kamar.toString())
-//                putExtra("ketersediaan", kamar.ketersediaan.toString())
             })
         }
 
@@ -62,6 +60,6 @@ class KamarAdapter(private val kamarList: ArrayList<Kamar>) :
     }
 
     override fun getItemCount(): Int {
-        return kamarList.size
+        return pilihKamarList.size
     }
 }
