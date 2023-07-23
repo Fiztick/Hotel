@@ -37,6 +37,7 @@ class PilihKamarAdapter(private val pilihKamarList: ArrayList<Kamar>) :
         val kamar: Kamar = pilihKamarList[position]
         holder.no_kamar.text = kamar.no_kamar
         holder.tipe_kamar.text = kamar.tipe_kamar
+        holder.ketersediaan.text = kamar.ketersediaan
 
         // item diklik loncat balik ke addbooking activity
         holder.itemView.setOnClickListener {

@@ -60,7 +60,6 @@ class PilihKamarActivity : AppCompatActivity() {
         pilihKamarArrayList.clear()
 
         db = FirebaseFirestore.getInstance()
-
         // bikin query firebase
         val query = db.collection("kamar")
             .orderBy("no_kamar")
