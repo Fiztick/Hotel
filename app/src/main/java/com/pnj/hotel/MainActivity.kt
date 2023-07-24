@@ -103,6 +103,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onActivityReenter(resultCode: Int, data: Intent?) {
+        super.onActivityReenter(resultCode, data)
+
+        kamarRecyclerView = binding.kamarListView
+        kamarRecyclerView.layoutManager = LinearLayoutManager(this)
+        kamarRecyclerView.setHasFixedSize(true)
+
+        kamarArrayList = arrayListOf()
+        kamarAdapter = KamarAdapter(kamarArrayList)
+
+        kamarRecyclerView.adapter = kamarAdapter
+    }
+
     private fun load_data() {
         kamarArrayList.clear()
         db = FirebaseFirestore.getInstance()

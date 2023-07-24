@@ -36,7 +36,7 @@ class KamarAdapter(private val kamarList: ArrayList<Kamar>) :
         val kamar: Kamar = kamarList[position]
         holder.no_kamar.text = kamar.no_kamar
         holder.tipe_kamar.text = kamar.tipe_kamar
-//        holder.ketersediaan.text = kamar.ketersediaan
+        holder.ketersediaan.text = kamar.ketersediaan
 
         // kalo itemnya diklik loncat ke activity edit kamar
         holder.itemView.setOnClickListener {
@@ -44,7 +44,7 @@ class KamarAdapter(private val kamarList: ArrayList<Kamar>) :
             activity.startActivity(Intent(activity, EditKamarActivity::class.java).apply {
                 putExtra("no_kamar", kamar.no_kamar.toString())
                 putExtra("tipe_kamar", kamar.tipe_kamar.toString())
-//                putExtra("ketersediaan", kamar.ketersediaan.toString())
+                putExtra("ketersediaan", kamar.ketersediaan.toString())
             })
         }
 

@@ -44,6 +44,7 @@ class PilihKamarAdapter(private val pilihKamarList: ArrayList<Kamar>) :
             activity = it.context as AppCompatActivity
             activity.startActivity(Intent(activity, AddBookingActivity::class.java).apply {
                 putExtra("no_kamar", kamar.no_kamar.toString())
+                putExtra("tipe_kamar", kamar.tipe_kamar.toString())
             })
         }
 

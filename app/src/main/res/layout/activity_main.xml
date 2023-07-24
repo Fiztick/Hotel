@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Cari Kamar"
-                android:textSize="25dp"
+                android:textSize="30dp"
                 android:id="@+id/txt_search_kamar"
                 android:background="@drawable/search_input_layout"/>
         </LinearLayout>

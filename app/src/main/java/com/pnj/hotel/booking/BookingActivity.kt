@@ -22,6 +22,7 @@ import com.pnj.hotel.R
 import com.pnj.hotel.auth.SettingsActivity
 import com.pnj.hotel.chat.ChatActivity
 import com.pnj.hotel.databinding.ActivityBookingBinding
+import com.pnj.hotel.kamar.Kamar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
@@ -181,6 +182,9 @@ class BookingActivity : AppCompatActivity() {
                         .whereEqualTo("nik_penyewa", booking.nik_penyewa)
                         .get()
                         .await()
+
+                    val new_data_kamar = updateKetersediaan(position)
+                    val (curr_kamar) = setDefaultValue()
                     if(bookingQuery.documents.isNotEmpty()) {
                         for (document in bookingQuery) {
                             try {
@@ -209,5 +213,29 @@ class BookingActivity : AppCompatActivity() {
                 }
             }
         }).attachToRecyclerView(bookingRecyclerView)
+    }
+
+    fun setDefaultValue(): Array<Any> {
+        val intent = intent
+        val no_kamar = intent.getStringExtra("no_kamar").toString()
+        val tipe_kamar = intent.getStringExtra("tipe_kamar").toString()
+        val ketersediaan = intent.getStringExtra("ketersediaan").toString()
+
+        val curr_kamar = Kamar(no_kamar, tipe_kamar, ketersediaan)
+
+        Log.e("data curr_kamar", "no_kamar: ${curr_kamar.no_kamar}, tipe_kamar: ${curr_kamar.tipe_kamar}, ketersediaan: ${curr_kamar.ketersediaan}")
+
+        return arrayOf(curr_kamar)
+    }
+
+    fun updateKetersediaan(position: Int): Map<String, Any> {
+        val booking = bookingArrayList[position]
+        var no_kamar = booking.no_kamar
+
+        val kamar = mutableMapOf<String, Any>()
+        kamar["no_kamar"] = no_kamar.toString()
+        kamar["ketersediaan"] = "Tersedia"
+
+        return kamar
     }
 }
